@@ -42,24 +42,24 @@ makeCacheMatrix <- function( m = matrix() ) {
 ## changed), then the "cachesolve" should retrieve the inverse from the cache.
 cacheSolve <- function(x, ...) {
 
-    ## Return a matrix that is the inverse of 'x'
+    ## return a matrix that is the inverse of 'x'
     m <- x$getInv()
 
-    ## Just return the inverse if its already set
+    ## return the inverse if its already set
     if( !is.null(m) ) {
             message("getting cached data")
             return(m)
     }
 
-    ## Get the matrix from our object
+    ## get the matrix from our object
     data <- x$get()
 
-    ## Calculate the inverse using matrix multiplication
+    ## the inverse using matrix multiplication
     m <- solve(data) %*% data
 
-    ## Set the inverse to the object
+    ## set the inverse to the object
     x$setInv(m)
 
-    ## Return the matrix
+    ## return the matrix
     m
 }
